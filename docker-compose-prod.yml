@@ -1,0 +1,20 @@
+dryhomecrm-elasticsearch:
+  container_name: dryhomecrm-elasticsearch
+  image: elasticsearch:1.7.3
+  # volumes:
+  #   - ~/volumes/jhipster/dryhomecrm/elasticsearch/:/usr/share/elasticsearch/data/
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+dryhomecrm-mysql:
+  container_name: dryhomecrm-mysql
+  image: mysql:5.7.9
+  # volumes:
+  #   - ~/volumes/jhipster/dryhomecrm/mysql/:/var/lib/mysql/
+  environment:
+    - MYSQL_USER=root
+    - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    - MYSQL_DATABASE=dryhomecrm
+  ports:
+    - "3306:3306"
+  command: mysqld --lower_case_table_names=1

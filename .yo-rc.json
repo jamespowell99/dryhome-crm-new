@@ -1,0 +1,26 @@
+{
+  "generator-jhipster": {
+    "baseName": "dryhomecrm",
+    "packageName": "uk.co.dryhome",
+    "packageFolder": "uk/co/dryhome",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useSass": false,
+    "buildTool": "gradle",
+    "frontendBuilder": "grunt",
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "0f14496197f2028ff210c7cfabb32fba026fe3c7",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ]
+  }
+}
