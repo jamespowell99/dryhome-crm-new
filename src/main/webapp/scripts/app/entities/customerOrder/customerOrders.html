@@ -1,0 +1,90 @@
+<div>
+    <h2>CustomerOrders</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="customerOrder.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new CustomerOrder</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a CustomerOrder</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contactTitle"><span>ContactTitle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contactFirstName"><span>ContactFirstName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contactSurname"><span>ContactSurname</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tel"><span>Tel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mob"><span>Mob</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address1"><span>Address1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address2"><span>Address2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address3"><span>Address3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="town"><span>Town</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postCode"><span>PostCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="products"><span>Products</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="interested"><span>Interested</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paid"><span>Paid</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notes"><span>Notes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="customerOrder in customerOrders track by customerOrder.id">
+                    <td><a ui-sref="customerOrder.detail({id:customerOrder.id})">{{customerOrder.id}}</a></td>
+                    <td>{{customerOrder.name}}</td>
+                    <td>{{customerOrder.contactTitle}}</td>
+                    <td>{{customerOrder.contactFirstName}}</td>
+                    <td>{{customerOrder.contactSurname}}</td>
+                    <td>{{customerOrder.tel}}</td>
+                    <td>{{customerOrder.mob}}</td>
+                    <td>{{customerOrder.email}}</td>
+                    <td>{{customerOrder.address1}}</td>
+                    <td>{{customerOrder.address2}}</td>
+                    <td>{{customerOrder.address3}}</td>
+                    <td>{{customerOrder.town}}</td>
+                    <td>{{customerOrder.postCode}}</td>
+                    <td>{{customerOrder.products}}</td>
+                    <td>{{customerOrder.interested}}</td>
+                    <td>{{customerOrder.paid}}</td>
+                    <td>{{customerOrder.notes}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="customerOrder.detail({id:customerOrder.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="customerOrder.edit({id:customerOrder.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="customerOrder.delete({id:customerOrder.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
