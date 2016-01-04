@@ -1,12 +1,11 @@
 'use strict';
 
 angular.module('dryhomecrmApp').controller('OrderItemDialogController',
-    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'OrderItem', 'Product', 'N',
-        function($scope, $stateParams, $uibModalInstance, entity, OrderItem, Product, N) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'OrderItem', 'Product',
+        function($scope, $stateParams, $uibModalInstance, entity, OrderItem, Product) {
 
         $scope.orderItem = entity;
         $scope.products = Product.query();
-        $scope.ns = N.query();
         $scope.load = function(id) {
             OrderItem.get({id : id}, function(result) {
                 $scope.orderItem = result;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('dryhomecrmApp')
-    .controller('OrderItemDetailController', function ($scope, $rootScope, $stateParams, entity, OrderItem, Product, N) {
+    .controller('OrderItemDetailController', function ($scope, $rootScope, $stateParams, entity, OrderItem, Product) {
         $scope.orderItem = entity;
         $scope.load = function (id) {
             OrderItem.get({id: id}, function(result) {

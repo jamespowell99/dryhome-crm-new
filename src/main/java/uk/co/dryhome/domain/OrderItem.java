@@ -1,6 +1,5 @@
 package uk.co.dryhome.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -46,11 +45,6 @@ public class OrderItem implements Serializable {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-
-    @OneToMany(mappedBy = "orderItem")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<N> ns = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -106,14 +100,6 @@ public class OrderItem implements Serializable {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    public Set<N> getNs() {
-        return ns;
-    }
-
-    public void setNs(Set<N> ns) {
-        this.ns = ns;
     }
 
     @Override
