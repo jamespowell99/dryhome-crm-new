@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myOrderItemLabel">Create or edit a OrderItem</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="orderItem.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                    ng-model="orderItem.price"
+                    required />
+            <div ng-show="editForm.price.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.price.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.price.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_qty">Qty</label>
+            <input type="number" class="form-control" name="qty" id="field_qty"
+                    ng-model="orderItem.qty"
+                    required />
+            <div ng-show="editForm.qty.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.qty.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.qty.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="orderItem.notes"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_orderIndex">OrderIndex</label>
+            <input type="number" class="form-control" name="orderIndex" id="field_orderIndex"
+                    ng-model="orderItem.orderIndex"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_serialNumber">SerialNumber</label>
+            <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                    ng-model="orderItem.serialNumber"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_product">product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="orderItem.product" ng-options="product as product.name for product in products track by product.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

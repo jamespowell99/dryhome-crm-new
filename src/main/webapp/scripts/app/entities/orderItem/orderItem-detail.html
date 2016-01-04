@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span>OrderItem</span> {{orderItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Price</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.price}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Qty</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.qty}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Notes</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.notes}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>OrderIndex</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.orderIndex}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SerialNumber</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{orderItem.serialNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:orderItem.product.id})">{{orderItem.product.name}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -1,0 +1,69 @@
+<div>
+    <h2>OrderItems</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="orderItem.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new OrderItem</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a OrderItem</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Price</span></th>
+                    <th><span>Qty</span></th>
+                    <th><span>Notes</span></th>
+                    <th><span>OrderIndex</span></th>
+                    <th><span>SerialNumber</span></th>
+                    <th><span>product</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="orderItem in orderItems track by orderItem.id">
+                    <td><a ui-sref="orderItem.detail({id:orderItem.id})">{{orderItem.id}}</a></td>
+                    <td>{{orderItem.price}}</td>
+                    <td>{{orderItem.qty}}</td>
+                    <td>{{orderItem.notes}}</td>
+                    <td>{{orderItem.orderIndex}}</td>
+                    <td>{{orderItem.serialNumber}}</td>
+                    <td>
+                        <a ui-sref="product.detail({id:orderItem.product.id})">{{orderItem.product.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="orderItem.detail({id:orderItem.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="orderItem.edit({id:orderItem.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="orderItem.delete({id:orderItem.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
