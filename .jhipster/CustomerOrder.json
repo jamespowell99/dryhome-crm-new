@@ -1,0 +1,108 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "items",
+            "otherEntityName": "orderItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "customerOrder"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "orderNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "orderDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "dispatchDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "invoiceDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "placedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "method",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "invoiceNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "invoiceNotes1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "invoiceNotes2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "notes",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "paymentDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "paymentStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "paymentType",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "payymentAmount",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "vatRate",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160104220908",
+    "dto": "no",
+    "service": "no",
+    "pagination": "pagination"
+}

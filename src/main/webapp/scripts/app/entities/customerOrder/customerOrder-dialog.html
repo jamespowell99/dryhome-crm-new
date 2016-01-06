@@ -1,0 +1,158 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myCustomerOrderLabel">Create or edit a CustomerOrder</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="customerOrder.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_orderNumber">OrderNumber</label>
+            <input type="text" class="form-control" name="orderNumber" id="field_orderNumber"
+                    ng-model="customerOrder.orderNumber"
+                    required />
+            <div ng-show="editForm.orderNumber.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.orderNumber.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_orderDate">OrderDate</label>
+            <input id="field_orderDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="customerOrder.orderDate" is-open="datePickerForOrderDate.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForOrderDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            <div ng-show="editForm.orderDate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.orderDate.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dispatchDate">DispatchDate</label>
+            <input id="field_dispatchDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="customerOrder.dispatchDate" is-open="datePickerForDispatchDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDispatchDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_invoiceDate">InvoiceDate</label>
+            <input id="field_invoiceDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="customerOrder.invoiceDate" is-open="datePickerForInvoiceDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForInvoiceDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_placedBy">PlacedBy</label>
+            <input type="text" class="form-control" name="placedBy" id="field_placedBy"
+                    ng-model="customerOrder.placedBy"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_method">Method</label>
+            <input type="text" class="form-control" name="method" id="field_method"
+                    ng-model="customerOrder.method"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_invoiceNumber">InvoiceNumber</label>
+            <input type="text" class="form-control" name="invoiceNumber" id="field_invoiceNumber"
+                    ng-model="customerOrder.invoiceNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_invoiceNotes1">InvoiceNotes1</label>
+            <input type="text" class="form-control" name="invoiceNotes1" id="field_invoiceNotes1"
+                    ng-model="customerOrder.invoiceNotes1"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_invoiceNotes2">InvoiceNotes2</label>
+            <input type="text" class="form-control" name="invoiceNotes2" id="field_invoiceNotes2"
+                    ng-model="customerOrder.invoiceNotes2"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_notes">Notes</label>
+            <input type="text" class="form-control" name="notes" id="field_notes"
+                    ng-model="customerOrder.notes"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentDate">PaymentDate</label>
+            <input id="field_paymentDate" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="customerOrder.paymentDate" is-open="datePickerForPaymentDate.status.opened"
+            />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForPaymentDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentStatus">PaymentStatus</label>
+            <input type="text" class="form-control" name="paymentStatus" id="field_paymentStatus"
+                    ng-model="customerOrder.paymentStatus"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_paymentType">PaymentType</label>
+            <input type="text" class="form-control" name="paymentType" id="field_paymentType"
+                    ng-model="customerOrder.paymentType"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_payymentAmount">PayymentAmount</label>
+            <input type="text" class="form-control" name="payymentAmount" id="field_payymentAmount"
+                    ng-model="customerOrder.payymentAmount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_vatRate">VatRate</label>
+            <input type="number" class="form-control" name="vatRate" id="field_vatRate"
+                    ng-model="customerOrder.vatRate"
+                    required />
+            <div ng-show="editForm.vatRate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.vatRate.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.vatRate.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_n">N</label>
+            <input type="text" class="form-control" name="n" id="field_n"
+                    ng-model="customerOrder.n"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_customer">customer</label>
+            <select class="form-control" id="field_customer" name="customer" ng-model="customerOrder.customer" ng-options="customer as customer.name for customer in customers track by customer.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

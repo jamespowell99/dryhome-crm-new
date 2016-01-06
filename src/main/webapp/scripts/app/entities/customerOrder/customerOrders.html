@@ -1,0 +1,94 @@
+<div>
+    <h2>CustomerOrders</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="customerOrder.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new CustomerOrder</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a CustomerOrder</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="orderNumber"><span>OrderNumber</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="orderDate"><span>OrderDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dispatchDate"><span>DispatchDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceDate"><span>InvoiceDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="placedBy"><span>PlacedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="method"><span>Method</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceNumber"><span>InvoiceNumber</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceNotes1"><span>InvoiceNotes1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceNotes2"><span>InvoiceNotes2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="notes"><span>Notes</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentDate"><span>PaymentDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentStatus"><span>PaymentStatus</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentType"><span>PaymentType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payymentAmount"><span>PayymentAmount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="vatRate"><span>VatRate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="n"><span>N</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customer.name"><span>customer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="customerOrder in customerOrders track by customerOrder.id">
+                    <td><a ui-sref="customerOrder.detail({id:customerOrder.id})">{{customerOrder.id}}</a></td>
+                    <td>{{customerOrder.orderNumber}}</td>
+                        <td>{{customerOrder.orderDate | date:'mediumDate'}}</td>
+                        <td>{{customerOrder.dispatchDate | date:'mediumDate'}}</td>
+                        <td>{{customerOrder.invoiceDate | date:'mediumDate'}}</td>
+                    <td>{{customerOrder.placedBy}}</td>
+                    <td>{{customerOrder.method}}</td>
+                    <td>{{customerOrder.invoiceNumber}}</td>
+                    <td>{{customerOrder.invoiceNotes1}}</td>
+                    <td>{{customerOrder.invoiceNotes2}}</td>
+                    <td>{{customerOrder.notes}}</td>
+                        <td>{{customerOrder.paymentDate | date:'mediumDate'}}</td>
+                    <td>{{customerOrder.paymentStatus}}</td>
+                    <td>{{customerOrder.paymentType}}</td>
+                    <td>{{customerOrder.payymentAmount}}</td>
+                    <td>{{customerOrder.vatRate}}</td>
+                    <td>{{customerOrder.n}}</td>
+                    <td>
+                        <a ui-sref="customer.detail({id:customerOrder.customer.id})">{{customerOrder.customer.name}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="customerOrder.detail({id:customerOrder.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="customerOrder.edit({id:customerOrder.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="customerOrder.delete({id:customerOrder.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>
